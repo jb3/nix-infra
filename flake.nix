@@ -17,25 +17,17 @@
 
   outputs = { self, nixpkgs, disko, agenix, ... }:
     let
+      forAllSystems = nixpkgs.lib.genAttrs [
+        "x86_64-linux"
+        "aarch64-linux"
+        "aarch64-darwin"
+      ];
       devSystem = "aarch64-darwin";
       pkgs = nixpkgs.legacyPackages.${devSystem};
 
       deployUser = "joe";
       hosts = {
         odin = "odin.host.jb3.dev";
-      };
-
-      deployOdin = pkgs.writeShellApplication {
-        name = "deploy-odin";
-        runtimeInputs = [ pkgs.nixos-rebuild ];
-        text = ''
-          nixos-rebuild switch \
-            --flake .#odin \
-            --target-host ${deployUser}@${hosts.odin} \
-            --build-host ${deployUser}@${hosts.odin} \
-            --sudo \
-            "$@"
-        '';
       };
     in
     {
@@ -52,19 +44,38 @@
       };
 
       # nix run .#deploy-odin
-      apps.${devSystem}.deploy-odin = {
-        type = "app";
-        program = "${deployOdin}/bin/deploy-odin";
-      };
+      apps = forAllSystems (system:
+        let pkgs = nixpkgs.legacyPackages.${system};
+        in {
+          deploy-odin = {
+            type = "app";
+            program = "${pkgs.writeShellApplication {
+              name = "deploy-odin";
+              runtimeInputs = [ pkgs.nixos-rebuild ];
+              text = ''
+                nixos-rebuild switch \
+                  --flake .#odin \
+                  --target-host ${deployUser}@${hosts.odin} \
+                  --build-host ${deployUser}@${hosts.odin} \
+                  --sudo \
+                  "$@"
+              '';
+            }}/bin/deploy-odin";
+          };
+        });
 
       # nix develop
-      devShells.${devSystem}.default = pkgs.mkShell {
-        name = "nix-infra";
-        packages = [
-          pkgs.nixos-rebuild
-          agenix.packages.${devSystem}.default
-          pkgs.ssh-to-age
-        ];
-      };
+      devShells = forAllSystems (system:
+        let pkgs = nixpkgs.legacyPackages.${system};
+        in {
+          default = pkgs.mkShell {
+            name = "nix-infra";
+            packages = [
+              pkgs.nixos-rebuild
+              agenix.packages.${system}.default
+              pkgs.ssh-to-age
+            ];
+          };
+        });
     };
 }
