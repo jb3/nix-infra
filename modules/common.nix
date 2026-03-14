@@ -9,6 +9,7 @@
     ghostty.terminfo
     git
     htop
+    tmux
     vim
   ];
 
