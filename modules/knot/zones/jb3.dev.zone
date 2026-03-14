@@ -2,8 +2,8 @@ $ORIGIN jb3.dev.
 $TTL 600 ; 10 minutes
 
 ; SOA
-@   IN SOA  core.host.jb3.dev. joe.jb3.dev. (
-            SERIAL  ; serial
+@   IN SOA  odin.host.jb3.dev. joe.jb3.dev. (
+            SERIAL  ; serial, templated by Nix
             10800   ; refresh (3 hours)
             15      ; retry (15 seconds)
             604800  ; expire (1 week)
@@ -12,7 +12,7 @@ $TTL 600 ; 10 minutes
 
 ; Nameservers
 @           NS      odin.host.jb3.dev.
-@           NS      odin-backup.host.jb3.dev.
+@           NS      odin-secondary.host.jb3.dev.
 
 ; Apex A/AAAA
 @           A       202.61.228.148
@@ -46,9 +46,9 @@ _discord    TXT     "dh=f7b3af3cd06ad1c5c338fe901bb940d9c6f03106"
 @           LOC     38 57 6.120 N 77 8 48.120 W 0.00m 0.00m 0.00m 0.00m
 
 ; Hosts
-odin.host           A       202.61.228.148
-odin-backup.host    A       202.61.228.148
-rt1.host            A       66.245.193.219
+odin.host              A       202.61.228.148
+odin-secondary.host    A       202.61.228.148
+rt1.host               A       66.245.193.219
 
 ; Subdomains
 blog-staging    A       202.61.228.148
