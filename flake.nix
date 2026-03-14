@@ -33,6 +33,7 @@
     {
       nixosConfigurations.odin = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
+        specialArgs = { inherit self; };
         modules = [
           disko.nixosModules.disko
           agenix.nixosModules.default
@@ -40,7 +41,7 @@
           ./modules/common.nix
           ./modules/users.nix
           ./modules/ssh.nix
-          (import ./modules/knot/knot.nix { inherit self; })
+          ./modules/knot/knot.nix
         ];
       };
 
