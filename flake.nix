@@ -40,6 +40,7 @@
           ./modules/common.nix
           ./modules/users.nix
           ./modules/ssh.nix
+          (import ./modules/knot/knot.nix { inherit self; })
         ];
       };
 

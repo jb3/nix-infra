@@ -4,11 +4,12 @@
   i18n.defaultLocale = "en_US.UTF-8";
 
   environment.systemPackages = with pkgs; [
-    vim
-    git
     curl
-    htop
+    dnsutils
     ghostty.terminfo
+    git
+    htop
+    vim
   ];
 
   nix.settings = {

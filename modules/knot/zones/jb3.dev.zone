@@ -1,0 +1,96 @@
+$ORIGIN jb3.dev.
+$TTL 600 ; 10 minutes
+
+; SOA
+@   IN SOA  core.host.jb3.dev. joe.jb3.dev. (
+            SERIAL  ; serial
+            10800   ; refresh (3 hours)
+            15      ; retry (15 seconds)
+            604800  ; expire (1 week)
+            10800   ; minimum (3 hours)
+            )
+
+; Nameservers
+@           NS      odin.host.jb3.dev.
+@           NS      odin-backup.host.jb3.dev.
+
+; Apex A/AAAA
+@           A       202.61.228.148
+@           AAAA    2a03:4000:57:b16:a4be:28ff:fe49:f0a1
+
+; Mail
+@           MX      1   aspmx.l.google.com.
+@           MX      5   alt1.aspmx.l.google.com.
+@           MX      5   alt2.aspmx.l.google.com.
+@           MX      10  alt3.aspmx.l.google.com.
+@           MX      10  alt4.aspmx.l.google.com.
+
+; TXT / SPF / Verification
+@           TXT     "v=spf1 include:_spf.google.com ~all"
+@           TXT     "keybase-site-verification=IwS3xfzNgfRW24EKdVy0_baH8QRbYcoZ39lmtSKXffk"
+@           TXT     "google-site-verification=_ji-xazMDoljwe3s-FlMzGspJBD1MSKM99DpXCYPWZs"
+@           TXT     "thanks for playing."
+
+; DMARC / DKIM
+_dmarc      TXT     "v=DMARC1; p=quarantine; adkim=s; aspf=s; rua=mailto:joe@jb3.dev"
+google._domainkey TXT "v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA5r+PJSyA15Gr+4ZcU7GO2OLxGqdSN75P+dgFYhnbgwtrK8Rlgd1bhoOm5e8a3xHjxDyk3ucRA5WNlaAxoZXkKJmO+9+88CPEjBCsWgabMs/krU2jl9fLNFgYJSbVKRKPrivafSAs5VwDpfgeapsdaNAa4pQ+fowrrgfZRUwLU6dZUpQ" "+cNUYRI4M5TXnIQSaoPBWd1mNheFaSuq4fKH/c0anWfJluMA/BkyUoYXqew6TIzFONv72J5kxakQMyYi4xvUtj81O2kJMu36HZYUkqbKsJ+dU9h4K+YHJFSJp8x5zgrfPrBdm7EWyUJKYEubMhwIBhBgx9NrOTso3ztKhdwIDAQAB"
+
+; Discord (TTL override)
+_discord    TXT     "dh=f7b3af3cd06ad1c5c338fe901bb940d9c6f03106"
+
+; CAA
+@           CAA     0 issue  "letsencrypt.org"
+@           CAA     0 iodef  "mailto:joe@jb3.dev"
+
+; LOC
+@           LOC     38 57 6.120 N 77 8 48.120 W 0.00m 0.00m 0.00m 0.00m
+
+; Hosts
+odin.host           A       202.61.228.148
+odin-backup.host    A       202.61.228.148
+rt1.host            A       66.245.193.219
+
+; Subdomains
+blog-staging    A       202.61.228.148
+blog-staging    AAAA    2a03:4000:57:b16:a4be:28ff:fe49:f0a1
+*.blog-staging  A       202.61.228.148
+*.blog-staging  AAAA    2a03:4000:57:b16:a4be:28ff:fe49:f0a1
+files           A       202.61.228.148
+files           AAAA    2a03:4000:57:b16:a4be:28ff:fe49:f0a1
+leacs           A       202.61.228.148
+leacs           AAAA    2a03:4000:57:b16:a4be:28ff:fe49:f0a1
+znc             A       202.61.228.148
+znc             AAAA    2a03:4000:57:b16:a4be:28ff:fe49:f0a1
+polywork        CNAME   glacial-raspberry-1ci6dx01r4f5eui8kjdp7lfl.herokudns.com.
+
+; PGP CERT
+joe         CERT    PGP 0 0 (
+                mDMEZLVmghYJKwYBBAHaRw8BAQdARPO/7yeCz0HKWXXH
+                Fcx+gcyWDTP6avX8i1qsSSNt71e0F0pvZSBCYW5rcyA8
+                am9lQGpiMy5kZXY+iI4EExYKADYCGwMCGQEWIQRQnN/8
+                LQeDozz4fStwPuId5NTZyQUCZNaXQgULBwkDAgUVCAoC
+                AwMWAQICHgQACgkQcD7iHeTU2ckkMAEAqxGO+4U0TmYD
+                u01tFlhfEFeY8C9LnRZGjc+CGkly+K0BAOlV+EiZYLhE
+                W8B/vVfjkxVFliNDwPcKe7+psv/tozACtCBKb2UgQmFu
+                a3MgPGpvZS5iYW5rc0Buc3R2LmNvLnVrPoiLBBMWCgAz
+                AhsDFiEEUJzf/C0Hg6M8+H0rcD7iHeTU2ckFAmTWl0IF
+                CwcJAwIFFQgKAgMDFgECAh4EAAoJEHA+4h3k1NnJjcIB
+                APRnoOJS72H3I45kAUx/MppdNpu56tvIqEoWvbhLfzen
+                AQCWjJEN1ZKaIXX690FBwvT+dJu+dilwxoPB1YWMYWCw
+                BLQhSm9lIEJhbmtzIDxqb2UuYmFua3NAdXJuMTM1MC5u
+                ZXQ+iIsEExYKADMCGwMWIQRQnN/8LQeDozz4fStwPuId
+                5NTZyQUCZNaXQwULBwkDAgUVCAoCAwMWAQICHgQACgkQ
+                cD7iHeTU2cn0BAEAzIx5iUPpL4smkumpbFOwIvCppaXU
+                hTODMdTWKAMcai8A/3miEilIAV2bkeUFtoJJXNSWHgVv
+                6RaQdHep+eqRBtgEtCRKb2UgQmFua3MgPHBzeWpiMTdA
+                bm90dGluZ2hhbS5hYy51az6IiwQTFgoAMwIbAxYhBFCc
+                3/wtB4OjPPh9K3A+4h3k1NnJBQJk1pdDBQsHCQMCBRUI
+                CgIDAxYBAgIeBAAKCRBwPuId5NTZyZ/EAQDSgIR9jF9h
+                5D0vERh+9cULi9vLbN1Z+Hfo1K6PVqjB8wEAvgnPRmzI
+                lhIo1vRnAsmrVniY8fgiBcCkNY0wQ3v7UAu4OARktWaC
+                EgorBgEEAZdVAQUBAQdAx1VcS8r1Ke7rr3Zpc5c6jZ7q
+                NiHgOyNB2Sp6OXth8DQDAQgHiHgEGBYKACAWIQRQnN/8
+                LQeDozz4fStwPuId5NTZyQUCZLVmggIbDAAKCRBwPuId
+                5NTZyRTLAQC+X6vf83kQJueHKiR25u7oH1e3KH6kwlD5
+                GTZlattpSgD+N6/ViGCBOIso3b+EDj7RccWpCm6A5z+4
+                JLVM2DDfnwk= )
