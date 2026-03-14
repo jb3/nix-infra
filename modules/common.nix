@@ -7,8 +7,8 @@
     vim
     git
     curl
-    wget
     htop
+    ghostty.terminfo
   ];
 
   nix.settings = {
