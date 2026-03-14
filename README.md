@@ -1,2 +1,1 @@
-# nix-infra
-Personal Nix infrastructure
+# Personal NixOS infrastructure
