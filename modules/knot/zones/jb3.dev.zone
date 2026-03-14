@@ -29,7 +29,6 @@ $TTL 600 ; 10 minutes
 @           TXT     "v=spf1 include:_spf.google.com ~all"
 @           TXT     "keybase-site-verification=IwS3xfzNgfRW24EKdVy0_baH8QRbYcoZ39lmtSKXffk"
 @           TXT     "google-site-verification=_ji-xazMDoljwe3s-FlMzGspJBD1MSKM99DpXCYPWZs"
-@           TXT     "thanks for playing."
 
 ; DMARC / DKIM
 _dmarc      TXT     "v=DMARC1; p=quarantine; adkim=s; aspf=s; rua=mailto:joe@jb3.dev"

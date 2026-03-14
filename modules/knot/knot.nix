@@ -1,4 +1,14 @@
 { self, config, ... }:
+
+let
+  zoneText = builtins.readFile ./zones/jb3.dev.zone;
+
+  zoneSerial = builtins.replaceStrings
+    [ "a"  "b"  "c"  "d"  "e"  "f" ]
+    [ "1"  "2"  "3"  "4"  "5"  "6" ]
+    (builtins.substring 0 9
+      (builtins.hashString "sha256" zoneText));
+in
 {
   age.secrets."knot-tsig-key" = {
     file  = ../../secrets/knot-tsig-key.age;
@@ -29,10 +39,9 @@
       zone = [
         {
           domain = "jb3.dev";
-          file = builtins.toFile "jb3.dev.zone" (builtins.replaceStrings
-            [ "SERIAL" ]
-            [ (toString self.lastModified) ]
-            (builtins.readFile ./zones/jb3.dev.zone));
+          file   = builtins.toFile "jb3.dev.zone" (
+            builtins.replaceStrings [ "SERIAL" ] [ zoneSerial ] zoneText
+          );
           acl = "acl-rfc2136-update";
         }
       ];
