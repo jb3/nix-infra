@@ -44,6 +44,7 @@
           ./modules/certificates.nix
           ./modules/nginx/nginx.nix
           ./modules/knot/knot.nix
+          ./modules/tor.nix
         ];
       };
 

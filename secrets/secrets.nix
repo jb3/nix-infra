@@ -7,9 +7,17 @@ let
 
 in
 {
+  # Users
   "user-password.age".publicKeys = [ joe odin ];
   "ci-password.age".publicKeys = [ joe odin ];
+
+  # DNS
   "knot-tsig-key.age".publicKeys = [ joe odin ];
   "acme-tsig-key.age".publicKeys = [ joe odin ];
+
+  # NGINX
   "nginx-htpasswd.age".publicKeys = [ joe odin ];
+
+  # Tor
+  "hs_ed25519_secret_key.age".publicKeys = [ joe odin ];
 }

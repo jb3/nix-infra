@@ -1,4 +1,7 @@
 { ... }:
+let
+    torHostname = "joebanksukvuobm4ko4zsujdqydeuza5olorgmokpjcxqcr6gctu7vqd.onion";
+in
 {
     systemd.tmpfiles.rules = [
         "d /var/www/jb3.dev 0775 root www -"
@@ -15,6 +18,7 @@
             index = "index.html";
             tryFiles = "$uri $uri/ =404";
             extraConfig = ''
+                add_header Onion-Location "http://${torHostname}$request_uri";
                 error_page 404 /404.html;
             '';
         };

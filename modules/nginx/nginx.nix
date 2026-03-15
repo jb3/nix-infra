@@ -6,6 +6,7 @@
         ./sites/blog.nix
         ./sites/blog-staging.nix
         ./sites/files.nix
+        ./sites/blog-tor.nix
         ./sites/leacs.nix
 
         # Additional configuration
@@ -29,4 +30,6 @@
     networking.firewall.allowedTCPPorts = [ 80 443 ];
 
     users.users.nginx.extraGroups = [ "acme" ];
+
+    systemd.services.nginx.serviceConfig.PrivateTmp = true;
 }
