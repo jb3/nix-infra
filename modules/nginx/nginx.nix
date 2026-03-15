@@ -2,6 +2,7 @@
 {
     imports = [
         ./sites/blog.nix
+        ./sites/files.nix
     ];
 
     services.nginx = {
