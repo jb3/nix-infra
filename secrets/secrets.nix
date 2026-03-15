@@ -11,4 +11,5 @@ in
   "ci-password.age".publicKeys = [ joe odin ];
   "knot-tsig-key.age".publicKeys = [ joe odin ];
   "acme-tsig-key.age".publicKeys = [ joe odin ];
+  "nginx-htpasswd.age".publicKeys = [ joe odin ];
 }

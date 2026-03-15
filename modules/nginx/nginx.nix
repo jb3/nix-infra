@@ -6,6 +6,7 @@
         ./sites/blog.nix
         ./sites/blog-staging.nix
         ./sites/files.nix
+        ./sites/leacs.nix
 
         # Additional configuration
         ./ci.nix
