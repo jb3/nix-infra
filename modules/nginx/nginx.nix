@@ -1,6 +1,7 @@
 { ... }:
 {
     imports = [
+        ./sites/default.nix
         ./sites/blog.nix
         ./sites/files.nix
     ];
