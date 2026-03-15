@@ -60,7 +60,6 @@ leacs           A       202.61.228.148
 leacs           AAAA    2a03:4000:57:b16:a4be:28ff:fe49:f0a1
 znc             A       202.61.228.148
 znc             AAAA    2a03:4000:57:b16:a4be:28ff:fe49:f0a1
-polywork        CNAME   glacial-raspberry-1ci6dx01r4f5eui8kjdp7lfl.herokudns.com.
 
 ; PGP CERT
 joe         CERT    PGP 0 0 (
