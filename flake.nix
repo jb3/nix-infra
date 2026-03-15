@@ -42,7 +42,7 @@
           ./modules/users.nix
           ./modules/ssh.nix
           ./modules/certificates.nix
-          ./modules/nginx.nix
+          ./modules/nginx/nginx.nix
           ./modules/knot/knot.nix
         ];
       };
