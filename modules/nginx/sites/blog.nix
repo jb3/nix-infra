@@ -12,7 +12,7 @@
 
         locations."/" = {
             index = "index.html";
-            tryFiles = "$uri $uri/ 404.html";
+            tryFiles = "$uri $uri/ /404.html";
         };
     };
 }
