@@ -1,9 +1,13 @@
 { ... }:
 {
     imports = [
+        # Sites
         ./sites/default.nix
         ./sites/blog.nix
         ./sites/files.nix
+
+        # Additional configuration
+        ./ci.nix
     ];
 
     services.nginx = {

@@ -1,7 +1,8 @@
 { ... }:
 {
     systemd.tmpfiles.rules = [
-        "d /var/www/jb3.dev 0755 root root -"
+        "d /var/www/jb3.dev 0775 root www -"
+        "Z /var/www/jb3.dev 0775 root www -"
     ];
 
     services.nginx.virtualHosts."jb3.dev" = {
