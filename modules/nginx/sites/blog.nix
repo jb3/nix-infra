@@ -13,7 +13,10 @@
 
         locations."/" = {
             index = "index.html";
-            tryFiles = "$uri $uri/ /404.html";
+            tryFiles = "$uri $uri/ =404";
+            extraConfig = ''
+                error_page 404 /404.html;
+            '';
         };
     };
 }
