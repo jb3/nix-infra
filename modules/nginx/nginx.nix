@@ -8,6 +8,16 @@
 
     services.nginx = {
         enable = true;
+
+        appendHttpConfig = ''
+            if_modified_since before;
+        '';
+
+        recommendedTlsSettings = true;
+        recommendedGzipSettings = true;
+        recommendedOptimisation = true;
+        recommendedBrotliSettings = true;
+        experimentalZstdSettings = true;
     };
 
     networking.firewall.allowedTCPPorts = [ 80 443 ];
