@@ -5,6 +5,7 @@ let
     "jb3.dev"
     "*.jb3.dev"
     "*.blog-staging.jb3.dev"
+    "thanks.for.playing.jb3.dev"
   ];
   certIdentifier = "jb3.dev-prod";
   certEmail = "joe@jb3.dev";
