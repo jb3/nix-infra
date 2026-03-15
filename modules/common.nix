@@ -9,6 +9,8 @@
     ghostty.terminfo
     git
     htop
+    openssl
+    ripgrep
     tmux
     vim
   ];

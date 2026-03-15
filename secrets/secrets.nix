@@ -9,4 +9,5 @@ in
 {
   "user-password.age".publicKeys = [ joe odin ];
   "knot-tsig-key.age".publicKeys = [ joe odin ];
+  "acme-tsig-key.age".publicKeys = [ joe odin ];
 }

@@ -43,6 +43,7 @@ in
             builtins.replaceStrings [ "SERIAL" ] [ zoneSerial ] zoneText
           );
           acl = "acl-rfc2136-update";
+          zonefile-sync = -1;
         }
       ];
     };

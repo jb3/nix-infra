@@ -41,6 +41,8 @@
           ./modules/common.nix
           ./modules/users.nix
           ./modules/ssh.nix
+          ./modules/certificates.nix
+          ./modules/nginx.nix
           ./modules/knot/knot.nix
         ];
       };
