@@ -46,6 +46,7 @@
           ./modules/knot/knot.nix
           ./modules/tor.nix
           ./modules/znc.nix
+          ./modules/goaccess.nix
         ];
       };
 
