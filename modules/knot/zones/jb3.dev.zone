@@ -56,6 +56,8 @@ blog-staging    AAAA    2a03:4000:57:b16:a4be:28ff:fe49:f0a1
 *.blog-staging  AAAA    2a03:4000:57:b16:a4be:28ff:fe49:f0a1
 files           A       202.61.228.148
 files           AAAA    2a03:4000:57:b16:a4be:28ff:fe49:f0a1
+gtd             A       202.61.228.148
+gtd             AAAA    2a03:4000:57:b16:a4be:28ff:fe49:f0a1
 leacs           A       202.61.228.148
 leacs           AAAA    2a03:4000:57:b16:a4be:28ff:fe49:f0a1
 logs            A       202.61.228.148

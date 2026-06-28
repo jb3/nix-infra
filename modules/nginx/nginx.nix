@@ -6,6 +6,7 @@
         ./sites/blog.nix
         ./sites/blog-staging.nix
         ./sites/files.nix
+        ./sites/gtd.nix
         ./sites/blog-tor.nix
         ./sites/leacs.nix
 
