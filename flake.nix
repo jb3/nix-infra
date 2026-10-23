@@ -50,25 +50,29 @@
         ];
       };
 
-      # nix run .#deploy-odin
+      # nix run .#deploy-odin       (switch)
+      # nix run .#deploy-odin-boot  (activate on next reboot)
       apps = forAllSystems (system:
-        let pkgs = nixpkgs.legacyPackages.${system};
-        in {
-          deploy-odin = {
+        let
+          pkgs = nixpkgs.legacyPackages.${system};
+          mkDeploy = name: action: {
             type = "app";
             program = "${pkgs.writeShellApplication {
-              name = "deploy-odin";
+              inherit name;
               runtimeInputs = [ pkgs.nixos-rebuild ];
               text = ''
-                nixos-rebuild switch \
+                nixos-rebuild ${action} \
                   --flake .#odin \
                   --target-host ${deployUser}@${hosts.odin} \
                   --build-host ${deployUser}@${hosts.odin} \
                   --sudo \
                   "$@"
               '';
-            }}/bin/deploy-odin";
+            }}/bin/${name}";
           };
+        in {
+          deploy-odin = mkDeploy "deploy-odin" "switch";
+          deploy-odin-boot = mkDeploy "deploy-odin-boot" "boot";
         });
 
       # nix develop
